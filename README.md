@@ -20,17 +20,17 @@ This project serves as a practical demonstration of SQLite3 usage in C++.
 [21:26:41.510] [debug] Database filled
 
 Option choice (-1 for help): -1
-Commands:
-0   finish
-1   add an author
-2   add a book
-3   add a category
-4   set book's categories
-5   set book's authors
-6   print all books
-7   print all authors
-8   print all categories
-9   print all books by a category
+  Commands:
+    0   finish
+    1   add an author
+    2   add a book
+    3   add a category
+    4   set book's categories
+    5   set book's authors
+    6   print all books
+    7   print all authors
+    8   print all categories
+    9   print all books by a category
 
 Option choice (-1 for help): 2
 Title: Beloved
@@ -38,38 +38,38 @@ Price: 255
 Link to the file: example.org/7
 
 Option choice (-1 for help): 6
-List of books:
-1   Война и мир|324|example.org/1
-2   Why are u gae?|100|example.org/2
-3   Happy Place|140|example.org/3
-4   The Housemaid|540|example.org/4
-5   Why are you running?|440|example.org/5
-6   Fourth Wing|640|example.org/6
-7   Beloved|255|example.org/7
+  List of books:
+    1   Война и мир|324|example.org/1
+    2   Why are u gae?|100|example.org/2
+    3   Happy Place|140|example.org/3
+    4   The Housemaid|540|example.org/4
+    5   Why are you running?|440|example.org/5
+    6   Fourth Wing|640|example.org/6
+    7   Beloved|255|example.org/7
 
 Option choice (-1 for help): 9
-List of categories:
-1   Fiction
-2   Science
-3   Biology
+  List of categories:
+    1   Fiction
+    2   Science
+    3   Biology
 
 Choice: 2
-List of books:
-2   Why are u gae?|100|example.org/2
-5   Why are you running?|440|example.org/5
-4   The Housemaid|540|example.org/4
+  List of books:
+    2   Why are u gae?|100|example.org/2
+    5   Why are you running?|440|example.org/5
+    4   The Housemaid|540|example.org/4
 
 Option choice (-1 for help): 1
 Full name: Toni Morrison
 
 Option choice (-1 for help): 7
-List of authors:
-1   Fefan Feka Oihl
-2   Will Smith
-3   William Shakespeare
-4   Agatha Christie
-5   Barbara Cartland
-6   Toni Morrison
+  List of authors:
+    1   Fefan Feka Oihl
+    2   Will Smith
+    3   William Shakespeare
+    4   Agatha Christie
+    5   Barbara Cartland
+    6   Toni Morrison
 
 Option choice (-1 for help): 0
 [21:30:20.266] [debug] Database closed
