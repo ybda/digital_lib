@@ -1,7 +1,7 @@
 #pragma once
 #include <filesystem>
 
-namespace digitalLib {
+namespace db {
     /**
      * std::filesystem::path - full path to database (.sqlite file).
      * Opens existing database. And if there are no database, creates one.
@@ -25,10 +25,12 @@ namespace digitalLib {
 
     void addAuthor(const std::string& fullName);
 
-    void addBook(const std::string& title, const int price, const std::string& file);
+    void addBook(const std::string& title, int price, const std::string& file);
 
     void addCategory(const std::string& name);
 
-    void addAuthorsBooks(const int author_id, const int book_id);
-    void addCategoriesBooks(const int category_id, const int book_id);
+    void addAuthorsBooks(int author_id, int book_id);
+    void addCategoriesBooks(int category_id, int book_id);
+
+    void findAllBooks();
 }
