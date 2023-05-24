@@ -77,7 +77,15 @@ Option choice (-1 for help): 0
 
 
 ## Supported platforms
-Project is not tested on Windows. On Windows problems with non-ASCII characters aren't ruled out.
+This project has been tested and verified on various Linux distributions. 
+Although it should work on other POSIX-compliant systems, it has not been tested on Windows. 
+Please note that on Windows problems with non-ASCII characters aren't ruled out.
+
+
+## Contributions
+Contributions to this project are welcome. If you encounter any issues, 
+have suggestions for improvements, or would like to add new features, 
+please feel free to open an issue or submit a pull request.
 
 
 ## Dependencies
