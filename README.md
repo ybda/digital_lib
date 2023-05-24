@@ -1,6 +1,5 @@
 # digital_lib
-Extremely lightweight, user-friendly, nice and simple shell program for playing with a SQLite3 database using primary and foreign keys. 
-The main goal of the project is to demonstrate working with SQLite3 in C++.
+Extremely lightweight, user-friendly, nice and simple shell program for playing with a SQLite3 database using primary and foreign keys.
 This project serves as a practical demonstration of SQLite3 usage in C++.
 
 
@@ -77,8 +76,8 @@ Option choice (-1 for help): 0
 
 
 ## Supported platforms
-This project has been tested and verified on various Linux distributions. 
-Although it should work on other POSIX-compliant systems, it has not been tested on Windows. 
+This project has been tested and verified on various Linux distributions.
+Although it should work on other POSIX-compliant systems, it has not been tested on Windows.
 Please note that on Windows problems with non-ASCII characters aren't ruled out.
 
 
@@ -89,7 +88,9 @@ please feel free to open an issue or submit a pull request.
 
 
 ## Dependencies
-spdlog, fmt, sqlite3
+- spdlog 
+- fmt 
+- sqlite3
 
 
 ## License
