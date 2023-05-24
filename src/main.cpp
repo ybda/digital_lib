@@ -2,7 +2,6 @@
 #include <filesystem>
 #include <fmt/core.h>
 #include <spdlog/spdlog.h>
-#include <fmt/format.h>
 
 #include "db.h"
 #include "db_filler.h"
@@ -12,7 +11,7 @@
 void configure_logger() {
     spdlog::set_level(spdlog::level::debug);
     spdlog::set_pattern("[%H:%M:%S.%e] [%^%l%$] %v");
-    spdlog::info("Logger configured");
+    spdlog::debug("Logger configured");
 }
 
 void configure_encoding() {
@@ -32,7 +31,7 @@ void printBooks(const std::vector<db::Book> &books, const int spacesCount = 2) {
     const std::string spaces1(spacesCount, ' '), spaces2(spacesCount + 2, ' ');
     std::cout << spaces1 << "List of books:\n";
     for (const auto &book: books) {
-        fmt::print("{}{}   {} {} {}\n", spaces2, book.id, book.title.c_str(), book.price, book.file.c_str());
+        fmt::print("{}{}   {}|{}|{}\n", spaces2, book.id, book.title.c_str(), book.price, book.file.c_str());
     }
 }
 
@@ -54,7 +53,7 @@ void printAuthors(const std::vector<db::Author> &authors, const int spacesCount 
 
 void printHelp() {
     std::cout << "  Commands:\n"
-                 "    0   complete\n"
+                 "    0   finish\n"
                  "    1   add an author\n"
                  "    2   add a book\n"
                  "    3   add a category\n"

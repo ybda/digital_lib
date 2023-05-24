@@ -1,3 +1,4 @@
+#include <spdlog/spdlog.h>
 #include "db_filler.h"
 #include "db.h"
 
@@ -11,11 +12,11 @@ namespace db_filler {
     }
 
     static void addBooks() {
-        db::addBook("How to make деньги?", 324, "example.org/1");
+        db::addBook("Война и мир", 324, "example.org/1");
         db::addBook("Why are u gae?", 100, "example.org/2");
         db::addBook("Happy Place", 140, "example.org/3");
         db::addBook("The Housemaid", 540, "example.org/4");
-        db::addBook("Trigun Deluxe Edition", 440, "example.org/5");
+        db::addBook("Why are you running?", 440, "example.org/5");
         db::addBook("Fourth Wing", 640, "example.org/6");
     }
 
@@ -59,5 +60,6 @@ namespace db_filler {
         addCategories();
         addAuthorsBooks();
         addCategoriesBooks();
+        spdlog::debug("Database filled");
     }
 }

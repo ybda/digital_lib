@@ -1,9 +1,7 @@
 #include <sqlite3.h>
-#include <iostream>
 #include <stdexcept>
 #include <spdlog/spdlog.h>
 #include <string>
-#include <sstream>
 #include <vector>
 
 #include "db.h"
