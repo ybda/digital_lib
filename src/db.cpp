@@ -4,6 +4,7 @@
 #include <spdlog/spdlog.h>
 #include <string>
 #include <sstream>
+#include <vector>
 
 #include "db.h"
 
@@ -23,6 +24,7 @@ namespace db {
 
     void close() {
         sqlite3_close(m_db);
+        spdlog::debug("Database closed");
     }
 
     void createTables() {
@@ -33,7 +35,7 @@ CREATE TABLE authors (
 );
 
 CREATE TABLE books (
-	isbn INTEGER PRIMARY KEY AUTOINCREMENT,
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	title TEXT NOT NULL,
 	price INTEGER NOT NULL,
 	file TEXT NOT NULL
@@ -152,22 +154,82 @@ DROP TABLE IF EXISTS categories_books;
         sqlite3_finalize(stmt);
     }
 
-    void findAllBooks() {
+    std::vector<Book> findAllBooks() {
         const char *query = "SELECT * FROM books;";
         sqlite3_stmt *stmt;
         sqlite3_prepare_v2(m_db, query, -1, &stmt, nullptr);
 
-        std::stringstream ss;
-        ss << "All books:";
+        std::vector<Book> rs;
+
         while (sqlite3_step(stmt) == SQLITE_ROW) {
-            int id = sqlite3_column_int(stmt, 0);
-            const unsigned char* title = sqlite3_column_text(stmt, 1);
-            int price = sqlite3_column_int(stmt, 2);
-            const unsigned char* file = sqlite3_column_text(stmt, 3);
-            ss << fmt::format("\nid: {}\ntitle: {}\nprice: {}\nfile: {}\n", id, title, price, file);
+            rs.push_back(Book {
+                                 sqlite3_column_int(stmt, 0),
+                                 sqlite3_column_text(stmt, 1),
+                                 sqlite3_column_int(stmt, 2),
+                                 sqlite3_column_text(stmt, 3)
+                         });
         }
         sqlite3_finalize(stmt);
 
-        spdlog::info(ss.str());
+        return rs;
+    }
+
+    std::vector<Category> findAllCategories() {
+        const char *query = "SELECT * FROM categories;";
+        sqlite3_stmt *stmt;
+        sqlite3_prepare_v2(m_db, query, -1, &stmt, nullptr);
+
+        std::vector<Category> rs;
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            rs.push_back(Category {
+                    sqlite3_column_int(stmt, 0),
+                    sqlite3_column_text(stmt, 1)
+            });
+        }
+        sqlite3_finalize(stmt);
+
+        return rs;
+    }
+
+    std::vector<Author> findAllAuthors() {
+        const char *query = "SELECT * FROM authors;";
+        sqlite3_stmt *stmt;
+        sqlite3_prepare_v2(m_db, query, -1, &stmt, nullptr);
+
+        std::vector<Author> rs;
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            rs.push_back(Author {
+                    sqlite3_column_int(stmt, 0),
+                    sqlite3_column_text(stmt, 1)
+            });
+        }
+        sqlite3_finalize(stmt);
+
+        return rs;
+    }
+
+    std::vector<Book> findBooksByCategory(const int categoryId) {
+        const char *query = "SELECT books.*\n"
+                            "FROM books\n"
+                            "JOIN categories_books ON books.id = categories_books.book_id\n"
+                            "WHERE categories_books.category_id = ?;";
+        sqlite3_stmt *stmt;
+        sqlite3_prepare_v2(m_db, query, -1, &stmt, nullptr);
+
+        sqlite3_bind_int(stmt, 1, categoryId);
+
+        std::vector<Book> rs;
+
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            rs.push_back(Book {
+                    sqlite3_column_int(stmt, 0),
+                    sqlite3_column_text(stmt, 1),
+                    sqlite3_column_int(stmt, 2),
+                    sqlite3_column_text(stmt, 3)
+            });
+        }
+        sqlite3_finalize(stmt);
+
+        return rs;
     }
 }

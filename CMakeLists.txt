@@ -13,7 +13,8 @@ add_executable(${PROJECT_NAME}
         src/main.cpp
 
         include/db.h
-        include/db_filler.h)
+        include/db_filler.h
+        include/util.h)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 
