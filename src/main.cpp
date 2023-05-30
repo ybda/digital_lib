@@ -11,7 +11,6 @@
 void configure_logger() {
     spdlog::set_level(spdlog::level::debug);
     spdlog::set_pattern("[%H:%M:%S.%e] [%^%l%$] %v");
-    spdlog::debug("Logger configured");
 }
 
 void configure_encoding() {
@@ -77,6 +76,7 @@ void shell() {
             printHelp();
 
         } else if (opt == 0) {
+            std::cout << '\n';
             break;
 
         } else if (opt == 1) {
@@ -165,6 +165,7 @@ int main(const int argc, const char **argv) {
     db_filler::fill();
 
     std::cout << '\n';
+
     shell();
 
     db::close();

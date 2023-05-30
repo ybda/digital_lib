@@ -12,11 +12,11 @@ This project serves as a practical demonstration of SQLite3 usage in C++.
 
 ## Example:
 ```
-[21:26:39.088] [debug] Logger configured
-[21:26:39.088] [debug] Database opened
-[21:26:39.344] [debug] Tables dropped
-[21:26:39.594] [debug] Tables created
-[21:26:41.510] [debug] Database filled
+$ digital_lib
+[00:18:15.071] [debug] Database opened
+[00:18:15.388] [debug] Tables dropped
+[00:18:15.696] [debug] Tables created
+[00:18:18.254] [debug] Database filled
 
 Option choice (-1 for help): -1
   Commands:
@@ -30,21 +30,25 @@ Option choice (-1 for help): -1
     7   print all authors
     8   print all categories
     9   print all books by a category
+    10  print all books by part of author's name
 
 Option choice (-1 for help): 2
 Title: Beloved
 Price: 255
-Link to the file: example.org/7
+Link to the file: example.org/103526
 
 Option choice (-1 for help): 6
   List of books:
-    1   Война и мир|324|example.org/1
-    2   Why are u gae?|100|example.org/2
-    3   Happy Place|140|example.org/3
-    4   The Housemaid|540|example.org/4
-    5   Why are you running?|440|example.org/5
-    6   Fourth Wing|640|example.org/6
-    7   Beloved|255|example.org/7
+    1   Война и мир|324|example.org/176537585
+    2   О дивный новый мир|100|example.org/275726856
+    3   Happy Place|140|example.org/37667586
+    4   The Housemaid|540|example.org/47674585
+    5   Why are you running?|440|example.org/5836468
+    6   Fourth Wing|640|example.org/66675748
+    7   The Stand|800|example.org/74358563
+    8   Carrie|500|example.org/8458563
+    9   It|860|example.org/94358563
+    10  Beloved|255|example.org/103526
 
 Option choice (-1 for help): 9
   List of categories:
@@ -54,24 +58,33 @@ Option choice (-1 for help): 9
 
 Choice: 2
   List of books:
-    2   Why are u gae?|100|example.org/2
-    5   Why are you running?|440|example.org/5
-    4   The Housemaid|540|example.org/4
+    2   О дивный новый мир|100|example.org/275726856
+    4   The Housemaid|540|example.org/47674585
+    5   Why are you running?|440|example.org/5836468
+    8   Carrie|500|example.org/8458563
 
 Option choice (-1 for help): 1
 Full name: Toni Morrison
 
 Option choice (-1 for help): 7
   List of authors:
-    1   Fefan Feka Oihl
+    1   Stephen King
     2   Will Smith
     3   William Shakespeare
     4   Agatha Christie
     5   Barbara Cartland
     6   Toni Morrison
 
+Option choice (-1 for help): 10
+Part of author's full name: King
+  List of books:
+    7   The Stand|800|example.org/74358563
+    8   Carrie|500|example.org/8458563
+    9   It|860|example.org/94358563
+
 Option choice (-1 for help): 0
-[21:30:20.266] [debug] Database closed
+
+[00:21:05.801] [debug] Database closed
 ```
 
 
