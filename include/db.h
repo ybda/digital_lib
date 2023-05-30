@@ -56,4 +56,5 @@ namespace db {
     std::vector<Category> findAllCategories();
     std::vector<Author> findAllAuthors();
     std::vector<Book> findBooksByCategory(int categoryId);
+    std::vector<Book> findBooksByPartOfAuthorsName(const std::string& title);
 }

@@ -36,12 +36,12 @@ CREATE TABLE books (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	title TEXT NOT NULL,
 	price INTEGER NOT NULL,
-	file TEXT NOT NULL
+	file TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE categories (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL
+	name TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE authors_books (
@@ -215,6 +215,26 @@ DROP TABLE IF EXISTS categories_books;
         sqlite3_prepare_v2(m_db, query, -1, &stmt, nullptr);
 
         sqlite3_bind_int(stmt, 1, categoryId);
+
+        std::vector<Book> rs;
+
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            rs.push_back(Book {
+                    sqlite3_column_int(stmt, 0),
+                    sqlite3_column_text(stmt, 1),
+                    sqlite3_column_int(stmt, 2),
+                    sqlite3_column_text(stmt, 3)
+            });
+        }
+        sqlite3_finalize(stmt);
+
+        return rs;
+    }
+
+    std::vector<Book> findBooksByPartOfAuthorsName(const std::string& name) {
+        const std::string query = "select books.* from books join authors_books on books.id = authors_books.book_id join authors on authors.id = authors_books.author_id where authors.full_name like '%" + name + "%';";
+        sqlite3_stmt *stmt;
+        sqlite3_prepare_v2(m_db, query.c_str(), -1, &stmt, nullptr);
 
         std::vector<Book> rs;
 

@@ -24,7 +24,7 @@ void configure_encoding() {
 std::filesystem::path getDbPath(const char *argv0) {
     std::filesystem::path exePath = std::filesystem::canonical(
             std::filesystem::path(argv0)).parent_path().parent_path();
-    return exePath / "other" / "dl.sqlite";
+    return exePath / "other" / "dl.sqlite3";
 }
 
 void printBooks(const std::vector<db::Book> &books, const int spacesCount = 2) {
@@ -62,7 +62,9 @@ void printHelp() {
                  "    6   print all books\n"
                  "    7   print all authors\n"
                  "    8   print all categories\n"
-                 "    9   print all books by a category\n";
+                 "    9   print all books by a category\n"
+                 "    10  print all books by part of author's name"
+                 "\n";
 }
 
 
@@ -105,8 +107,7 @@ void shell() {
             db::addCategory(name);
 
         } else if (opt == 4 || opt == 5) {
-            auto books = db::findAllBooks();
-            printBooks(books);
+            printBooks(db::findAllBooks());
             std::cout << "\nChoice: ";
             int bId = util::getnum();
 
@@ -139,6 +140,13 @@ void shell() {
             std::cout << "\nChoice: ";
             int cId = util::getnum();
             printBooks(db::findBooksByCategory(cId));
+
+        } else if (opt == 10) {
+            std::cout << "Part of author's full name: ";
+            std::string name;
+            std::getline(std::cin, name);
+            printBooks(db::findBooksByPartOfAuthorsName(name));
+
         }
 
 
