@@ -104,7 +104,3 @@ please feel free to open an issue or submit a pull request.
 - spdlog 
 - fmt 
 - sqlite3
-
-
-## License
-This project is released under the MIT-License.
